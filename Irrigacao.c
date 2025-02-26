@@ -50,6 +50,7 @@ int main()
     // Configura os LED verde e azul como saída
     SetOutput(GREEN_LED);
     SetOutput(BLUE_LED);
+    SetOutput(RED_LED);
 
     // Define a cor inicial dos LEDs da matriz RGB
     color[0].red = 2;
@@ -91,20 +92,19 @@ int main()
     // Loop principal que mantém o sistema funcionando
     while (true)
     {
-        // ReadJoystick(&vrx_value, &vry_value);
+        ReadJoystick(&vrx_value, &vry_value);
 
         if (temperatureControl)
         {
-            temperature = 0 + (vrx_value - LOWEST_AXIS_VALUE) * (50 / range);
-            printf("bbbbbb");
+            temperature = 0 + (vrx_value - LOWEST_AXIS_VALUE) * 50 / range;
         }
         if (humidityControl)
         {
-            humidity = 0 + (vrx_value - LOWEST_AXIS_VALUE) * (100 / range);
+            humidity = 0 + (vrx_value - LOWEST_AXIS_VALUE) * 100 / range;
         }
         if (brightnessControl)
         {
-            brightness = 0 + (vrx_value - LOWEST_AXIS_VALUE) * (100 / range);
+            brightness = 0 + (vrx_value - LOWEST_AXIS_VALUE) * 100 / range;
         }
         UpdateIndicators(temperature, humidity, brightness);
 
@@ -237,27 +237,30 @@ void ReadJoystick(uint16_t *vrx_value, uint16_t *vry_value)
 
 void UpdateIndicators(uint8_t temp, uint8_t hum, uint8_t bri)
 {
-    if (temp > TEMP_MEDIUM_MAX ||
-        hum > HUMIDITY_MEDIUM_MAX ||
-        bri > BRIGHTNESS_MEDIUM_MAX)
-    {
+    if (temp > TEMP_MEDIUM_MAX || hum > HUMIDITY_MEDIUM_MAX || bri > BRIGHTNESS_MEDIUM_MAX) {
         gpio_put(RED_LED, true);
         gpio_put(GREEN_LED, false);
         gpio_put(BLUE_LED, false);
         // UpdateDrawing(3);
         // acionar buzzer
-    }
-    else if (temp > TEMP_NORMAL_MAX ||
-             hum > HUMIDITY_NORMAL_MAX ||
-             bri > BRIGHTNESS_NORMAL_MAX)
-    {
-        gpio_put(RED_LED, false);
+    } else if (temp > TEMP_NORMAL_MAX || hum > HUMIDITY_NORMAL_MAX || bri > BRIGHTNESS_NORMAL_MAX) {
+        gpio_put(RED_LED, true);
         gpio_put(GREEN_LED, true);
-        gpio_put(BLUE_LED, true);
+        gpio_put(BLUE_LED, false);
         // UpdateDrawing(2);
-    }
-    else
-    {
+    } else if (temp < TEMP_NORMAL_MAX || hum < HUMIDITY_NORMAL_MAX || bri < BRIGHTNESS_NORMAL_MAX) {
+        gpio_put(RED_LED, true);
+        gpio_put(GREEN_LED, true);
+        gpio_put(BLUE_LED, false);
+        // UpdateDrawing(0);
+        // Possibly a different buzzer sound
+    } else if (temp < TEMP_NORMAL_MIN || hum < HUMIDITY_NORMAL_MIN || bri < BRIGHTNESS_NORMAL_MIN) {
+        gpio_put(RED_LED, true);
+        gpio_put(GREEN_LED, false);
+        gpio_put(BLUE_LED, false);
+        // UpdateDrawing(0);
+        // Possibly a different buzzer sound
+    } else {
         gpio_put(RED_LED, false);
         gpio_put(GREEN_LED, true);
         gpio_put(BLUE_LED, false);

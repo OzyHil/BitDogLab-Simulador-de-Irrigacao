@@ -29,11 +29,13 @@
 #define VRX_PIN 26               // Pino do joystick eixo X
 #define VRY_PIN 27               // Pino do joystick eixo Y
 #define PWM_WRAP 4066            // Resolução do PWM
-
+#define TEMP_NORMAL_MIN 20
 #define TEMP_NORMAL_MAX 30
 #define TEMP_MEDIUM_MAX 40
+#define HUMIDITY_NORMAL_MIN 40
 #define HUMIDITY_NORMAL_MAX 60
 #define HUMIDITY_MEDIUM_MAX 80
+#define BRIGHTNESS_NORMAL_MIN 50
 #define BRIGHTNESS_NORMAL_MAX 70
 #define BRIGHTNESS_MEDIUM_MAX 90
 
