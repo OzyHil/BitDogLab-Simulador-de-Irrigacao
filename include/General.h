@@ -23,21 +23,24 @@
 #define I2C_SDA 14
 #define I2C_SCL 15
 #define ADRESS 0x3C
-#define JOYSTICK_BUTTON 22       // Botão do joystick
-#define LOWEST_AXIS_VALUE 16     // Menor valor lido pelo ADC do joystick
-#define HIGHEST_AXIS_VALUE 4082  // Maior valor lido pelo ADC do joystick
-#define VRX_PIN 26               // Pino do joystick eixo X
-#define VRY_PIN 27               // Pino do joystick eixo Y
-#define PWM_WRAP 4066            // Resolução do PWM
-#define TEMP_NORMAL_MIN 20
-#define TEMP_NORMAL_MAX 30
-#define TEMP_MEDIUM_MAX 40
+#define JOYSTICK_BUTTON 22      // Botão do joystick
+#define LOWEST_AXIS_VALUE 16    // Menor valor lido pelo ADC do joystick
+#define HIGHEST_AXIS_VALUE 4082 // Maior valor lido pelo ADC do joystick
+#define VRX_PIN 26              // Pino do joystick eixo X
+#define VRY_PIN 27              // Pino do joystick eixo Y
+#define PWM_WRAP 31250           // Resolução do PWM
+#define BUZZER_A 21
+
+#define TEMP_NORMAL_MIN 16
+#define TEMP_NORMAL_MAX 26
+#define TEMP_MEDIUM_MAX 36
+
 #define HUMIDITY_NORMAL_MIN 40
 #define HUMIDITY_NORMAL_MAX 60
 #define HUMIDITY_MEDIUM_MAX 80
-#define BRIGHTNESS_NORMAL_MIN 50
-#define BRIGHTNESS_NORMAL_MAX 70
-#define BRIGHTNESS_MEDIUM_MAX 90
+#define BRIGHTNESS_NORMAL_MIN 30
+#define BRIGHTNESS_NORMAL_MAX 50
+#define BRIGHTNESS_MEDIUM_MAX 70
 
 // Struct para manipulação da PIO
 typedef struct PIORefs
