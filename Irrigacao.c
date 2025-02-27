@@ -398,4 +398,8 @@
          UpdateDrawing(0);  // Padrão normal
          systemState.soundAlert = false;
      }
+
+     printf("TEMPERATURA %d", temp);
+     printf("HUMIDADE %d", hum);
+     printf("LUMINOSIDADE %d", bri);
  }
