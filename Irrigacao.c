@@ -153,7 +153,6 @@
  {
      SetOutput(RED_LED);
      SetOutput(GREEN_LED);
-     SetOutput(BLUE_LED);
  }
  
  /**
@@ -364,7 +363,6 @@
      {
          gpio_put(RED_LED, true);
          gpio_put(GREEN_LED, false);
-         gpio_put(BLUE_LED, false);
          UpdateDrawing(2);  // Padrão de alerta crítico
          systemState.soundAlert = true;
      }
@@ -373,7 +371,6 @@
      {
          gpio_put(RED_LED, true);
          gpio_put(GREEN_LED, false);
-         gpio_put(BLUE_LED, false);
          UpdateDrawing(1);  // Padrão de alerta
          systemState.soundAlert = true;
      }
@@ -382,7 +379,6 @@
      {
          gpio_put(RED_LED, true);
          gpio_put(GREEN_LED, true);
-         gpio_put(BLUE_LED, false);
          UpdateDrawing(1);  // Padrão de alerta
          systemState.soundAlert = false;
      }
@@ -391,7 +387,6 @@
      {
          gpio_put(RED_LED, true);
          gpio_put(GREEN_LED, true);
-         gpio_put(BLUE_LED, false);
          UpdateDrawing(1);  // Padrão de alerta
          systemState.soundAlert = false;
      }
@@ -400,7 +395,6 @@
      {
          gpio_put(RED_LED, false);
          gpio_put(GREEN_LED, true);
-         gpio_put(BLUE_LED, false);
          UpdateDrawing(0);  // Padrão normal
          systemState.soundAlert = false;
      }
